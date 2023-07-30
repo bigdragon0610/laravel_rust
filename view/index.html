@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang='ja'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='stylesheet' href='../public/style.css' />
-    <title>{{ $title }}</title>
-  </head>
+<html lang="ja">
 
-  <body>
-    <h1>Hello, {{ $name }}!</h1>
-    <input type='hidden' value='{{ $data }}' id='data' />
-    <script src='../public/script.js'></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../public/style.css" />
+  <title>{{ $title }}</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+  <h1>Hello, {{ $name }}!</h1>
+  <div x-data='{ data: `{{ $data }}`}'>
+    <template x-for="todo in JSON.parse(data)">
+      <h2 x-text="todo.name"></h2>
+    </template>
+  </div>
+  <script src="../public/script.js"></script>
+</body>
+
 </html>
